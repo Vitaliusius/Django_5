@@ -5,7 +5,7 @@ import phonenumbers
 
 def editing_number(apps, schema_editor):
     Flat = apps.get_model('property', 'Flat')
-    for flat in Flat.objects.all():
+    for flat in Flat.objects.all().iterator():
         formatted_number = phonenumbers.parse(flat.owners_phonenumber, 'RU')
         if phonenumbers.is_valid_number(formatted_number):
             flat.owner_pure_phone = phonenumbers.format_number(formatted_number, phonenumbers.PhoneNumberFormat.INTERNATIONAL)
