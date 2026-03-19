@@ -8,9 +8,9 @@ def adding_records(apps, schema_editor):
     Owner = apps.get_model('property', 'Owner')
     for flat in Flat.objects.all().iterator():
         Owner.objects.get_or_create(
-            owner=flat.owner,
-            owner_pure_phone=flat.owner_pure_phone,
-            owners_phonenumber=flat.owners_phonenumber)
+            name=flat.owner,
+            pure_phone=flat.owner_pure_phone,
+            phonenumber=flat.owners_phonenumber)
 
 
 class Migration(migrations.Migration):
