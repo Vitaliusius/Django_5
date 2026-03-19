@@ -11,13 +11,4 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
-        migrations.RemoveField(
-            model_name='flat',
-            name='complaint_flat',
-        ),
-        migrations.AlterField(
-            model_name='complaint',
-            name='complaint_flat',
-            field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, related_name='author_claims', to='property.flat', verbose_name='Квартира, на которую жаловались'),
-        ),
     ]
