@@ -33,11 +33,11 @@ class FlatAdmin(admin.ModelAdmin):
 
 
 class ComplaintAdmin(admin.ModelAdmin):
-    raw_id_fields = ['author_complaint', 'complaint_flat']
+    raw_id_fields = ['author', 'flat']
 
 
 class OwnerAdmin(admin.ModelAdmin):
-    raw_id_fields = ['the_flat_are_owned']
+    raw_id_fields = ['flat']
 
 admin.site.register(Flat, FlatAdmin)
 admin.site.register(Complaint, ComplaintAdmin)
