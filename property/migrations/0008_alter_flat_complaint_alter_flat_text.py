@@ -13,14 +13,4 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
-        migrations.AlterField(
-            model_name='flat',
-            name='complaint',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.DO_NOTHING, to=settings.AUTH_USER_MODEL, verbose_name='Жалоба'),
-        ),
-        migrations.AlterField(
-            model_name='flat',
-            name='text',
-            field=models.TextField(blank=True, verbose_name='Текст жалобы'),
-        ),
     ]
