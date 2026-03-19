@@ -10,16 +10,4 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
-        migrations.RemoveField(
-            model_name='flat',
-            name='owner',
-        ),
-        migrations.RemoveField(
-            model_name='flat',
-            name='owner_pure_phone',
-        ),
-        migrations.RemoveField(
-            model_name='flat',
-            name='owners_phonenumber',
-        ),
     ]
