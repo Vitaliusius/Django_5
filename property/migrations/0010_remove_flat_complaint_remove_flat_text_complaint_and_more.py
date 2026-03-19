@@ -14,4 +14,39 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
+        migrations.AddField(
+            model_name='flat',
+            name='liked_by',
+            field=models.ManyToManyField(blank=True, related_name='liked_flats', to=settings.AUTH_USER_MODEL, verbose_name='Кто лайкнул'),
+        ),
+        migrations.AddField(
+            model_name='flat',
+            name='owner_pure_phone',
+            field=phonenumber_field.modelfields.PhoneNumberField(blank=True, db_index=True, max_length=128, region=None),
+        ),
+        migrations.AlterField(
+            model_name='flat',
+            name='new_building',
+            field=models.BooleanField(blank=True, db_index=True, null=True, verbose_name='Новострорйка'),
+        ),
+    
+        migrations.CreateModel(
+            name='Complaint',
+            fields=[
+                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('text_complaint', models.TextField(blank=True, verbose_name='Текст жалобы')),
+                ('author', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, related_name='complaints', to=settings.AUTH_USER_MODEL, verbose_name='Кто жаловался')),
+                ('flat', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, related_name='claims', to='property.flat', verbose_name='Квартира, на которую жаловались')),
+            ],
+        ),
+        migrations.CreateModel(
+            name='Owner',
+            fields=[
+                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('name', models.CharField(db_index=True, max_length=200, verbose_name='ФИО владельца')),
+                ('pure_phone', phonenumber_field.modelfields.PhoneNumberField(blank=True, db_index=True, max_length=128, region=None, verbose_name='Нормализованный номер телефона')),
+                ('phonenumber', models.CharField(blank=True, db_index=True, max_length=20, verbose_name='Номер владельца')),
+                ('flat', models.ManyToManyField(blank=True, related_name='owners', to='property.flat', verbose_name='Квартиры в собственности')),
+            ],
+        ),
     ]
